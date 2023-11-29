@@ -19,6 +19,7 @@ from dotenv import load_dotenv
 from PIL import Image, ImageDraw, ImageFont
 import matplotlib.font_manager as fm
 from openai import OpenAI
+from security import safe_command
 
 
 load_dotenv()
@@ -566,7 +567,7 @@ def capture_screen_with_cursor(file_path=os.path.join("screenshots", "screenshot
         screenshot = pyautogui.screenshot()
         screenshot.save(file_path)
     else:
-        subprocess.run(["screencapture", "-C", file_path])
+        safe_command.run(subprocess.run, ["screencapture", "-C", file_path])
 
 def extract_json_from_string(s):
     # print("extracting json from string", s)
