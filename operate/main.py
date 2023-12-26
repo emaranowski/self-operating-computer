@@ -572,8 +572,7 @@ def extract_json_from_string(s):
     # print("extracting json from string", s)
     try:
         # Find the start of the JSON structure
-        json_start = s.find("{")
-        if json_start == -1:
+        if (json_start := s.find("{")) == -1:
             return None
 
         # Extract the JSON part and convert it to a dictionary
